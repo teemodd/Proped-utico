@@ -3,16 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Curso Propedéutico de Matemáticas</title>
+    <title>Curso Propedéutico de Matemáticas - Guía de Videos</title>
     <style>
         /* --- Paleta de Colores y Variables --- */
         :root {
-            --vino: #800020;
-            --vino-oscuro: #5a0016;
-            --dorado: #D4AF37;
-            --fondo: #f4f4f9;
+            --vino: #800020; /* Color principal */
+            --vino-oscuro: #460213;
+            --dorado: #d2ad50; /* Color de acento */
+            --dorado-hover: #b19748;
+            --fondo: #f9f9f9;
             --texto: #333333;
-            --blanco: #ffffff;
+            --texto-claro: #ffffff;
+            --gris-card: #fcfcfc;
         }
 
         /* --- Estilos Generales --- */
@@ -20,7 +22,7 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
         body {
@@ -32,38 +34,36 @@
         /* --- Encabezado (Header) --- */
         header {
             background-color: var(--vino);
-            color: var(--blanco);
-            padding: 1.5rem 5%;
+            color: var(--texto-claro);
+            padding: 1rem 5%;
             display: flex;
             align-items: center;
             justify-content: space-between;
-            border-bottom: 4px solid var(--dorado);
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            border-bottom: 3px solid var(--dorado);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
         }
 
         .logo-container {
             display: flex;
             align-items: center;
-            gap: 15px;
+            gap: 1rem;
         }
 
+        /* REVISADO: Se eliminaron el fondo blanco, el borde y el borde redondeado (el "circulito") */
         .logo {
-            width: 60px;
-            height: 60px;
-            background-color: var(--blanco);
-            border: 2px solid var(--dorado);
-            border-radius: 50%;
-            object-fit: contain;
-            padding: 2px;
+            height: 100px; /* Ajusta la altura según necesites */
+            width: auto; /* Mantiene la proporción de la imagen PNG */
+            object-fit: contain; /* Asegura que se vea completa */
         }
 
-        h1 {
+        header h1 {
             font-size: 1.8rem;
             font-weight: 600;
         }
         
-        h1 span {
+        header h1 span {
             color: var(--dorado);
+            font-weight: 300;
         }
 
         /* --- Contenedor Principal y Galería --- */
@@ -76,6 +76,8 @@
         .intro {
             text-align: center;
             margin-bottom: 3rem;
+            border-bottom: 2px solid #eaeaea;
+            padding-bottom: 2rem;
         }
 
         .intro p {
@@ -86,28 +88,29 @@
 
         .galeria {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
             gap: 2rem;
         }
 
         /* --- Tarjetas (Cards) --- */
         .tarjeta {
-            background: var(--blanco);
-            border-radius: 10px;
+            background: var(--gris-card);
+            border-radius: 8px;
             overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
-            border-bottom: 4px solid transparent;
             display: flex;
             flex-direction: column;
+            border: 1px solid #eee;
         }
 
         .tarjeta:hover {
             transform: translateY(-5px);
             box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-            border-bottom: 4px solid var(--dorado);
+            border-color: var(--dorado);
         }
 
+        /* Icono de Play sobre un fondo oscuro para la miniatura */
         .tarjeta-img {
             background-color: var(--vino-oscuro);
             height: 120px;
@@ -115,19 +118,13 @@
             align-items: center;
             justify-content: center;
             color: var(--dorado);
-            position: relative;
-        }
-
-        .tarjeta-img::after {
-            content: '▶';
             font-size: 3rem;
-            opacity: 0.8;
+            opacity: 0.9;
             transition: opacity 0.3s;
         }
 
-        .tarjeta:hover .tarjeta-img::after {
+        .tarjeta:hover .tarjeta-img {
             opacity: 1;
-            color: var(--blanco);
         }
 
         .tarjeta-contenido {
@@ -140,16 +137,17 @@
         .tarjeta-contenido h3 {
             color: var(--vino);
             margin-bottom: 10px;
-            font-size: 1.1rem;
+            font-size: 1.2rem;
         }
 
         .tarjeta-contenido p {
-            font-size: 0.85rem;
+            font-size: 0.9rem;
             color: #555;
-            margin-bottom: 1rem;
+            margin-bottom: 1.5rem;
             flex-grow: 1;
         }
 
+        /* Contenedor para múltiples botones si el tema tiene más de un video */
         .grupo-botones {
             display: flex;
             flex-direction: column;
@@ -159,13 +157,13 @@
         .btn-ver {
             background-color: var(--vino);
             color: var(--dorado);
-            border: 1px solid var(--dorado);
-            padding: 8px;
+            border: 2px solid var(--dorado);
+            padding: 10px;
             text-align: center;
-            border-radius: 5px;
+            border-radius: 4px;
             cursor: pointer;
             font-weight: bold;
-            font-size: 0.85rem;
+            font-size: 0.9rem;
             transition: all 0.3s;
             width: 100%;
         }
@@ -195,31 +193,32 @@
             max-width: 800px;
             background: #000;
             border: 2px solid var(--dorado);
-            border-radius: 8px;
-            box-shadow: 0 0 20px rgba(212, 175, 55, 0.3);
+            border-radius: 5px;
+            box-shadow: 0 0 30px rgba(212, 175, 55, 0.4);
         }
 
         .cerrar {
             position: absolute;
-            top: -40px;
-            right: 0;
+            top: -45px;
+            right: -10px;
             color: var(--dorado);
-            font-size: 30px;
+            font-size: 35px;
             font-weight: bold;
             cursor: pointer;
             transition: color 0.3s;
         }
 
         .cerrar:hover {
-            color: var(--blanco);
+            color: var(--white);
         }
 
+        /* Ratio 16:9 para el video */
         .video-container {
             position: relative;
-            padding-bottom: 56.25%; /* Ratio 16:9 */
+            padding-bottom: 56.25%;
             height: 0;
             overflow: hidden;
-            border-radius: 5px;
+            border-radius: 3px;
         }
 
         .video-container iframe {
@@ -236,8 +235,8 @@
 
     <header>
         <div class="logo-container">
-            <img src="ruta_a_tu_logo.png" alt="Logo Universidad" class="logo">
-            <h1>Propedéutico <span>Matemáticas</span></h1>
+            <img src="logo.png" alt="Logo de la Universidad" class="logo">
+            <h1>Curso Propedéutico<span> Matemáticas</span></h1>
         </div>
     </header>
 
@@ -248,54 +247,55 @@
         </div>
 
         <div class="galeria">
+
             <article class="tarjeta">
-                <div class="tarjeta-img"></div>
+                <div class="tarjeta-img">▶</div>
                 <div class="tarjeta-contenido">
                     <h3>0.1 Conceptos Básicos</h3>
-                    <p>Propiedades de números reales, fracciones, símbolos de agrupación, MCD y MCM.</p>
+                    <p>Propiedades de números reales, fracciones, eliminación de agrupaciones, MCD y MCM.</p>
                     <div class="grupo-botones">
-                        <button class="btn-ver" onclick="abrirVideo('https://www.youtube.com/embed/X_cvP7SNKAU')">Ver Video</button>
+                        <button class="btn-ver" onclick="abrirVideo('https://www.youtube.com/embed/X_cvP7SNKAU')">Ver Video Completo</button>
                     </div>
                 </div>
             </article>
 
             <article class="tarjeta">
-                <div class="tarjeta-img"></div>
+                <div class="tarjeta-img">▶</div>
                 <div class="tarjeta-contenido">
                     <h3>0.2 Exponentes y Radicales</h3>
                     <p>Leyes de exponentes, propiedades, operaciones y simplificación de radicales.</p>
                     <div class="grupo-botones">
                         <button class="btn-ver" onclick="abrirVideo('https://www.youtube.com/embed/ainnlQ_Owq8')">Leyes de los Exponentes</button>
-                        <button class="btn-ver" onclick="abrirVideo('https://www.youtube.com/embed/videoseries?list=PLDjtbBXUusIyYtvOQdxnrIJappcOI7ana')">Playlist: Radicales</button>
+                        <button class="btn-ver" onclick="abrirVideo('https://www.youtube.com/embed/videoseries?list=PLDjtbBXUusIyYtvOQdxnrIJappcOI7ana')">Ver Lista de Radicales</button>
                     </div>
                 </div>
             </article>
 
             <article class="tarjeta">
-                <div class="tarjeta-img"></div>
+                <div class="tarjeta-img">▶</div>
                 <div class="tarjeta-contenido">
-                    <h3>0.3 Evaluación y Operaciones Básicas</h3>
+                    <h3>0.3 y 0.3.1 Operaciones Algebraicas Básicas</h3>
                     <p>Evaluación algebraica, suma y resta de expresiones, y operaciones con fracciones.</p>
                     <div class="grupo-botones">
-                        <button class="btn-ver" onclick="abrirVideo('https://www.youtube.com/embed/-FarPEv_smw')">Evaluación Algebraica</button>
-                        <button class="btn-ver" onclick="abrirVideo('https://www.youtube.com/embed/UJiUu8-fYgI')">Suma y Resta</button>
+                        <button class="btn-ver" onclick="abrirVideo('https://www.youtube.com/embed/-FarPEv_smw')">Ver Evaluación Algebraica</button>
+                        <button class="btn-ver" onclick="abrirVideo('https://www.youtube.com/embed/UJiUu8-fYgI')">Ver Suma y Resta</button>
                     </div>
                 </div>
             </article>
 
             <article class="tarjeta">
-                <div class="tarjeta-img"></div>
+                <div class="tarjeta-img">▶</div>
                 <div class="tarjeta-contenido">
                     <h3>0.3.2 Multiplicación y División</h3>
                     <p>Monomios, polinomios y División Sintética.</p>
                     <div class="grupo-botones">
-                        <button class="btn-ver" onclick="abrirVideo('https://www.youtube.com/embed/videoseries?list=PLeySRPnY35dEFxJelhtAW18BCcJ_7p3OJ')">Playlist: Multiplicación y División</button>
+                        <button class="btn-ver" onclick="abrirVideo('https://www.youtube.com/embed/videoseries?list=PLeySRPnY35dEFxJelhtAW18BCcJ_7p3OJ')">Ver Lista Completa</button>
                     </div>
                 </div>
             </article>
 
             <article class="tarjeta">
-                <div class="tarjeta-img"></div>
+                <div class="tarjeta-img">▶</div>
                 <div class="tarjeta-contenido">
                     <h3>0.3.3 Productos Notables</h3>
                     <p>Reglas fijas para binomios al cuadrado, conjugados, al cubo y con término común.</p>
@@ -303,47 +303,48 @@
                         <button class="btn-ver" onclick="abrirVideo('https://www.youtube.com/embed/o6PkQJEQql4')">Binomio al Cuadrado</button>
                         <button class="btn-ver" onclick="abrirVideo('https://www.youtube.com/embed/wQuK20H0ZNw')">Binomios Conjugados</button>
                         <button class="btn-ver" onclick="abrirVideo('https://www.youtube.com/embed/8Ncm_ZsPrmQ')">Binomio al Cubo</button>
-                        <button class="btn-ver" onclick="abrirVideo('https://www.youtube.com/embed/wLj5ULlIfUI')">Término Común</button>
+                        <button class="btn-ver" onclick="abrirVideo('https://www.youtube.com/embed/wLj5ULlIfUI')">Binomio con Término Común</button>
                     </div>
                 </div>
             </article>
 
             <article class="tarjeta">
-                <div class="tarjeta-img"></div>
+                <div class="tarjeta-img">▶</div>
                 <div class="tarjeta-contenido">
                     <h3>0.4 Factorización</h3>
                     <p>Factor común, diferencia de cuadrados, trinomios y suma/diferencia de cubos.</p>
                     <div class="grupo-botones">
-                        <button class="btn-ver" onclick="abrirVideo('https://www.youtube.com/embed/a8CUEopWCN0')">Ver todos los métodos</button>
+                        <button class="btn-ver" onclick="abrirVideo('https://www.youtube.com/embed/a8CUEopWCN0')">Ver todos los métodos (4 horas)</button>
                     </div>
                 </div>
             </article>
 
             <article class="tarjeta">
-                <div class="tarjeta-img"></div>
+                <div class="tarjeta-img">▶</div>
                 <div class="tarjeta-contenido">
                     <h3>0.5 Ecuaciones Lineales</h3>
-                    <p>Resolución de ecuaciones lineales con una sola incógnita.</p>
+                    <p>Resolución de ecuaciones lineales con una incógnita.</p>
                     <div class="grupo-botones">
-                        <button class="btn-ver" onclick="abrirVideo('https://www.youtube.com/embed/IHblqjW8RY8')">Ver Video</button>
+                        <button class="btn-ver" onclick="abrirVideo('https://www.youtube.com/embed/IHblqjW8RY8')">Ver Video Completo</button>
                     </div>
                 </div>
             </article>
 
             <article class="tarjeta">
-                <div class="tarjeta-img"></div>
+                <div class="tarjeta-img">▶</div>
                 <div class="tarjeta-contenido">
                     <h3>0.6 Sistemas de Ecuaciones 2x2</h3>
                     <p>Resolución de sistemas con dos incógnitas y planteamiento de problemas.</p>
                     <div class="grupo-botones">
                         <button class="btn-ver" onclick="abrirVideo('https://www.youtube.com/embed/BcV_WLCbFBU')">Introducción a Sistemas</button>
                         <button class="btn-ver" onclick="abrirVideo('https://www.youtube.com/embed/L0QuX9RpEoM')">Método de Sustitución</button>
-                        <button class="btn-ver" onclick="abrirVideo('https://www.youtube.com/embed/TR27etegq7g')">Suma o Resta (Reducción)</button>
-                        <button class="btn-ver" onclick="abrirVideo('https://www.youtube.com/embed/GSCivMSUqNc')">Planteamiento Parte 1</button>
-                        <button class="btn-ver" onclick="abrirVideo('https://www.youtube.com/embed/NAIjmDMNF10')">Planteamiento Parte 2</button>
+                        <button class="btn-ver" onclick="abrirVideo('https://www.youtube.com/embed/TR27etegq7g')">Método de Reducción (Suma/Resta)</button>
+                        <button class="btn-ver" onclick="abrirVideo('https://www.youtube.com/embed/GSCivMSUqNc')">Planteamiento de Problemas P1</button>
+                        <button class="btn-ver" onclick="abrirVideo('https://www.youtube.com/embed/NAIjmDMNF10')">Planteamiento de Problemas P2</button>
                     </div>
                 </div>
             </article>
+
         </div>
     </main>
 
@@ -360,16 +361,19 @@
         const modal = document.getElementById("videoModal");
         const iframe = document.getElementById("iframeVideo");
 
+        // Abre el modal y carga el video
         function abrirVideo(url) {
             iframe.src = url;
             modal.style.display = "flex";
         }
 
+        // Cierra el modal y detiene la reproducción
         function cerrarVideo() {
             modal.style.display = "none";
-            iframe.src = ""; 
+            iframe.src = ""; // Detiene la carga del video
         }
 
+        // Cierra el modal si se hace clic fuera del contenido del video
         window.onclick = function(event) {
             if (event.target == modal) {
                 cerrarVideo();
